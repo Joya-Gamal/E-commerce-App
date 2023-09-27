@@ -1,0 +1,12 @@
+
+.btn-count, .btn-checkout
+{
+    border: solid 1px #0aad0a;
+}
+
+.btn-checkout:hover
+{
+
+    background-color: #0aad0a; 
+    color: white;
+}

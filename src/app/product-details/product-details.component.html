@@ -1,0 +1,40 @@
+<div class="position-relative container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <owl-carousel-o [options]="customOptions">
+
+                <ng-container *ngFor="let image of product.images">
+                  <ng-template carouselSlide>
+                    <img [src]="image">
+                  </ng-template>
+                </ng-container>
+            
+              </owl-carousel-o>
+        </div>
+
+        <div class="col-md-8">
+            <h2>{{product.title}}</h2>
+            <p class="text-muted">{{product.description}}</p>
+            <p>{{product.category?.name}}</p>
+            <div class="d-flex justify-content-between">
+                <p>{{product.price}} EGP</p>
+                <div>
+                    <i class="fa fa-star rating-color"></i>
+                    {{product.ratingsAverage}}
+                </div>
+            </div>
+
+            <button class="btn w-100 bg-main text-white" (click)="addToCart(product.id)">
+                <i *ngIf="cartIsLoading" class="fa fa-spin fa-spinner"></i>
+                <span *ngIf="!cartIsLoading">+ Add</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<div *ngIf="isLoading" class="position-absolute bg-white top-0 start-0  d-flex justify-content-center align-items-center w-100 h-100">
+    <!-- <i class="fa fa-spin fa-spinner fa-2xl text-main "></i> -->
+    <img src="../../assets/images/loading.gif" class="img-fluid rounded-top" alt="">
+</div>

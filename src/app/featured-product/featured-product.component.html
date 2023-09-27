@@ -1,0 +1,19 @@
+<div class="container position-relative py-5">
+    <input type="text" class="form-control w-75 mx-auto my-5" [(ngModel)]="term" >
+    <div class="row">
+        <div *ngFor="let product of allProducts | search:term " class="col-md-2" data-bs-toggle="tooltip" data-bs-placement="top" [title]="product.title">
+             <app-product-item [product]="product"></app-product-item>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoading" class="z-3 position-absolute w-100 h-100 bg-white  top-0 start-0 d-flex justify-content-center align-items-center">
+<div>
+    <!-- <i  class="fa fa-spin fa-spinner fa-2xl text-main"></i> -->
+    <img src="../../assets/images/loading.gif" class="img-fluid rounded-top" alt="">
+</div>
+   
+
+</div>
+
+

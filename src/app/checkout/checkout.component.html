@@ -1,0 +1,24 @@
+<div class="col-md-6 mx-auto py-5 my-5">
+
+
+    <form [formGroup]="shippingAddress" (ngSubmit)="handleShipping()">
+
+        <label for="details">Details: </label>
+        <input type="text" id="details" formControlName="details" class="form-control mb-2">
+
+        <label for="phone">Phone: </label>
+        <input type="tel" id="details" formControlName="phone" class="form-control mb-2">
+
+        <label for="city">City: </label>
+        <input type="text" id="city" formControlName="city" class="form-control mb-2">
+
+
+        <button class="btn btn-outline-success w-100 my-3">Payment</button>
+
+
+   
+
+
+
+    </form>
+</div>

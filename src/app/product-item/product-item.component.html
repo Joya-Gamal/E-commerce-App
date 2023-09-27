@@ -1,0 +1,28 @@
+<div class="product  px-2 py-4" >
+
+    <a [routerLink]="['/productDetails', product.id]">
+        <img [src]="product.imageCover" class="w-100" alt="">
+        <p class="text-main">{{product.category.name}}</p>
+        <h2 class="h6 fw-bold">{{product.title.split(" ").splice(0,2).join(' ')}}
+            <span *ngIf="product.title.split(' ').length > 2">...</span>
+        </h2>
+    
+        
+        <div class="d-flex justify-content-between">
+            <h5>{{product.price}} EGP</h5>
+    
+            <div>
+                <i class="fa fa-star rating-color "></i>
+                {{product.ratingsAverage}}
+            </div>
+        </div>
+    
+
+    </a>
+    
+    <button class="btn bg-main text-white w-100" (click)="addToCart(product.id)">
+        <i class="fa fa-spin fa-spinner text-white" *ngIf="isLoading"></i>
+        <span *ngIf="!isLoading">+ Add</span>    
+    </button>
+
+</div>

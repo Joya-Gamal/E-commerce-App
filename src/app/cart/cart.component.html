@@ -1,0 +1,53 @@
+<div *ngIf="!isLoading" class="position-relative container py-5 my-5 " >
+    <div class="bg-main-light p-5">
+        <h2>Cart Shop</h2>
+
+        <div>
+            <button class="btn btn-checkout text-main d-block ms-auto mb-3">
+                <a [routerLink]="[ '/checkout/', cartItem.data?._id ] ">Check Out</a>
+            </button>
+        </div>
+        <div  class="d-flex justify-content-between align-items-center">
+            <h5>Total Price <span class="text-main"> {{cartItem?.data?.totalCartPrice}}</span></h5>
+            <h5>Total Numbers <span class="text-main">{{cartItem?.numOfCartItems}}</span></h5>
+        </div>
+
+        <div *ngFor="let item of cartItem.data?.products">
+            <div class="row align-items-center border-bottom p-2" *ngIf="item.count !=0" >
+
+                <div class="col-md-1">
+                    <img [src]="item?.product?.imageCover" class="w-100" alt="">
+                </div>
+    
+                <div class="col-md-11">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <h5>{{item?.product?.title}}</h5>
+                            <p class="text-main">{{item?.price}} EGP</p>
+                            <button (click)="removeCartItem(item.product._id)" class="btn m-0 p-0 text-danger"><i class="fa-solid fa-trash"></i> Remove</button>
+                        </div>
+                        
+                        <div>
+                            <button (click)="updateProductQuantity(item.product._id , item.count+1)"  class="btn btn-count">
+                              +
+                            </button>
+                            <span class="mx-3">{{item.count}}</span>
+                            <button (click)="updateProductQuantity(item.product._id , item.count-1)"  class="btn btn-count">
+                                -
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+       </div>
+
+</div>
+
+<div *ngIf="isLoading" class="w-100 h-100 bg-white position-absolute top-0 start-0 z-2 d-flex align-items-center justify-content-center">
+
+    <img  src="../../assets/images/loading.gif" class="img-fluid rounded-top" alt="">
+
+</div>
+
